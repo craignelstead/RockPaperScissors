@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 800px;
+    height: 100vh;
+}
+
+
+
+#weaponholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#weapontext {
+    display: flex;
+    justify-content: center;
+}
+
+#weaponselections {
+    display: flex;
+    justify-content: center;
+}
+
+#weaponselections > button {
+    margin: auto;
+}
+
+.buttons {
+    transition: all .05s ease;
+    text-align: center;
+    text-shadow: 0 0 .1rem black;
+    width: 6em;
+    height: 2em;
+    font-size: 2em;
+    background-color: rgb(237, 245, 240);
+}
+
+.buttons:hover {
+    background-color: rgb(215, 222, 217);
+}
+
+.pressed {
+    scale: 0.9;
+}
+
+#score, #roundresults {
+    text-align: center;
+}

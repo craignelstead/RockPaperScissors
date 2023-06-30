@@ -1,142 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rock Paper Scissors</title>
-
-    <script>
-
-        function getComputerChoice() {
-        //This function will get the computer's choice
-            //Generate a random number between 0 and 2
-            let ranNum = Math.floor(Math.random() * 3);
-
-            //Assign the random number to a string
-            let computerSelection;
-            switch(ranNum) {
-                case 0:
-                    computerSelection = "Rock";
-                    break;
-                case 1:
-                    computerSelection = "Paper";
-                    break;
-                case 2:
-                    computerSelection = "Scissors";
-            }
-            return computerSelection;
-        }
-
-        function playRound(computer1) {
-        //This function will get the player's choice, decide the game outcome, and display the results
-            //Prompt user selection
-            player1 = prompt("Rock, Paper, or Scissors?");
-            
-            //calls function to fix string case
-            player1 = formatString(player1);
-
-            //Make sure player string is rock, paper, or scissors
-            while (player1 !== "Rock" && player1 !== "Paper" && player1 !== "Scissors")
-                {
-                    alert("Please enter a valid selection");
-                    player1 = prompt("Rock, Paper, or Scissors?");
-                    player1 = formatString(player1);
-                }
-
-            console.log('C: '+ computer1 + ' P: ' + player1);
-
-            //Winning, Losing, Tie message variables
-            let winningMessage = player1 + ' beats ' + computer1 + ', you win this round!';
-            let losingMessage = computer1 + ' beats ' + player1 + ', you lose this round!';
-            let tieMessage = '2 ' + player1 + 's - Tie!';
-
-            //Declare victory variable
-            let victory;
-
-            //Determine the game outcome
-            if (player1 === computer1) {
-                alert(tieMessage);
-                victory = 'tie';
-            }
-            else if (player1 == 'Rock' && computer1 =='Paper') {
-                alert(losingMessage);
-                victory = 'comp';
-            }
-            else if (player1 == 'Rock' && computer1 =='Scissors') {
-                alert(winningMessage);
-                victory = 'human';
-            }
-            else if (player1 == 'Paper' && computer1 == 'Rock') {
-                alert(winningMessage);
-                victory = 'human';
-            }
-            else if (player1 == 'Paper' && computer1 == 'Scissors') {
-                alert(losingMessage);
-                victory = 'comp';
-            }
-            else if (player1 == 'Scissors' && computer1 == 'Rock') {
-                alert(losingMessage);
-                victory = 'comp';
-            }
-            else if (player1 == 'Scissors' && computer1 == 'Paper') {
-                alert(winningMessage);
-                victory = 'human';
-            }
-
-            return victory;
-        }
-
-        function formatString(stringToFormat) {
-            //Convert input to lowercase with uppercase first letter
-            stringToFormat = stringToFormat.charAt(0).toUpperCase() + stringToFormat.slice(1).toLowerCase();
-            
-            return stringToFormat;
-        }
-
-        //Begin the game
-        game();
-
-        function game() {
-        //This function will keep track of the rounds played to determine the winner
-
-            let humanCount = 0;
-            let computerCount = 0;
-            let messageVictory = 'Congratulations, you win! This is as good as it gets.';
-            let messageDefeat = 'You have been defeated. How humiliating.';
-            let outcome;
-            let computerSelection;
-            
-            //Play until either human or computer wins 3 rounds
-            while (humanCount < 3 && computerCount < 3) {
-                computerSelection = getComputerChoice();
-                outcome = playRound(computerSelection);
-
-                if (outcome == 'human') {
-                    humanCount++;
-                }
-                else if (outcome == 'comp') {
-                    computerCount++;
-                }
-
-                console.log('Human score: ' + humanCount);
-                console.log('Computer score: ' + computerCount);
-            }
-
-            //Determine ultimate winner
-            if (humanCount == 3) {
-                alert(messageVictory);
-            }
-            else {
-                alert(messageDefeat);
-            }
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href=".\styles.css">
+    </head>
 
 
-
-        }
+    <body>
+        <div id="container">
+            <div id="scorezone">
+                <h1 id="score">Human: 0   Computer: 0</h1>
+                <h2 id="roundresults">The game has not yet begun.</h2>
+            </div>
+            <div id="weaponzone">
+                <div id = "weapontext">
+                    <h1>Choose Your Weapon!</h1>
+                </div>
+                <div id = "weaponselections">
+                    <button class="buttons" id="Rock">Rock</button>
+                    <button class="buttons" id="Paper">Paper</button>
+                    <button class="buttons" id="Scissors">Scissors</button>
+                </div>
+            </div>
+        </div>
         
-    </script>
-
-</head>
-
-
-
+        <script src=".\script.js" delay></script>
+    </body>
 </html>
